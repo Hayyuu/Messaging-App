@@ -1,17 +1,23 @@
 const express=require('express');
-const fs=require('fs');
+const path=require('node:path');
 const app=express();
-let d;
-fs.readFile('index.html','utf8',(error,data)=>{
-    if(error){
-        console.log(error);
-        return;
-    }
-    else{
-        d=data;
-    }
-});
+console.log("hii");
+
+app.set("views",path.join(__dirname,"Views"));
+app.set("view engine","ejs");
+let message=[
+  {
+    text: "Hi there!",
+    user: "Amando",
+    added: new Date()
+  },
+  {
+    text: "Hello World!",
+    user: "Charles",
+    added: new Date()
+  }];
+
 app.listen(3000,()=>console.log("started..."));
 app.get('/',(req,res)=>{
-    res.send(d)
+    res.render("index",{ title: "Message Board",messages:message});
 });

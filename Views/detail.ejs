@@ -3,23 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title%></title>
+    <title>Detail</title>
 </head>
 <body>
     <ul>
-        <% messages.map((message,index)=>{%>
             <li><%= message.user %></li>
             <li><%= message.text %></li>
             <li><%= message.added %></li>
-            <button> <a href="/<%= index %>">Detail</a></button>
-            <hr>
-            <%
-        })
-
-        %>
     </ul>
-    <form action="/new" method="get">
-        <button type="submit">Add Message</button>
-    </form> 
 </body>
 </html>
